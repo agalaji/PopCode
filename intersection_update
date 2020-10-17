@@ -1,0 +1,29 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+a = int(input())
+s = set(map(int,input().split()))
+N = int(input())
+for i in range(N):
+    choice = input().split()
+    s2 =set(map(int,input().split())) 
+    if choice[0] == 'intersection_update':
+        try:
+            s.intersection_update(s2)
+        except(KeyValueError,ValueError):
+            pass
+    elif choice[0] == 'update':
+        try:
+            s.update(s2)
+        except(KeyValueError,ValueError):
+            pass
+    elif choice[0] == 'symmetric_difference_update':      
+        try:
+            s.symmetric_difference_update(s2)
+        except(KeyValueError,ValueError):
+            pass
+    elif choice[0] == 'difference_update':
+        try:
+            s.difference_update(s2)
+        except(KeyValueError,ValueError):
+            pass
+
+print(sum(s))
