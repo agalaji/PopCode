@@ -1,0 +1,41 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+N = int(input())
+credit=[]
+for i in range(N):
+    credit.append(input())
+
+def checkcon(val):
+    count=0
+    val=re.sub('-','',val)
+    res=  []
+    for x in val:
+        res.append(x)   
+    for i in range(len(res)-1):
+        if i == 14:
+            continue
+        if res[i] == res[i+1]:
+            if res[i+1] == res[i+2]:
+                if res[i+2] == res[i+3]:
+                    count= 1
+    if not re.findall(r'(^4|5|6)',res[0]):
+        count = 1
+    if len(res) >16:
+        count=1
+    if count == 1:
+        print("Invalid")
+    else:
+        print("Valid")
+def check1(val):
+    pattern = r'(\d{4}-\d{4}-\d{4}-\d{4})'
+    if not re.findall(pattern,val):
+        print("Invalid")
+    else:
+        checkcon(val)   
+for i in credit:
+    if re.findall(r'\d{16}',str(i)):
+        checkcon(i)
+    elif re.findall(r'(\d{4}-\d{4}-\d{4}-\d{4})',str(i)):
+        check1(i)
+    else:
+        print("Invalid")
