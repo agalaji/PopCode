@@ -1,0 +1,8 @@
+import re
+N = int(input())
+for i in range(N):
+    z=input()
+    if re.search(r'[A-Za-z]',z):
+        print(False)
+    else:
+        print(bool(re.search(r'(^(\+?|\-?)(\d+)?\.\d+$)',z)))
